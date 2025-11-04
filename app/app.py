@@ -15,10 +15,12 @@ BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 def index():
     weather_data = None
     city = ""
+    country = ""
     if request.method == 'POST':
         city = request.form['city']
+        country = request.form['country']
         params = {
-            'q': city,
+            'q': f"{city},{country}",
             'appid': API_KEY,
             'units': 'metric'
         }
